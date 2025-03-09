@@ -4,6 +4,7 @@ import random
 import os
 import time
 import json
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Secret key for sessions
@@ -13,8 +14,8 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USERNAME'] = 'smoulaiah5@gmail.com'  # Replace with your email
-app.config['MAIL_PASSWORD'] = 'ddxh mrqpcgvq ojrg'  # Replace with your email password
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Replace with your email
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Replace with your email password
 mail = Mail(app)
 
 # In-memory OTP storage (you can use a database in production)
